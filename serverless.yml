@@ -1,0 +1,32 @@
+service: player-api
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+custom:
+  warmup:
+    - production
+    - staging
+  optimize:
+    external: ['swagger-ui-dist']
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+
+package:
+  individually: true
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http:
+          path: /
+          method: any
+      - http:
+          cors: true
+          method: any
+          path: /{proxy+}
