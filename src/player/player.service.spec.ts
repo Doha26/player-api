@@ -1,18 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayerService } from './player.service';
+import { PlayerServiceMock } from '../__mocks__/mockPlayerService';
 
 describe('PlayerService', () => {
-  let service: PlayerService;
+  let playerService: PlayerService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
+    const ApiServiceProvider = {
+      provide: PlayerService,
+      useClass: PlayerServiceMock,
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [PlayerService],
     }).compile();
 
-    service = module.get<PlayerService>(PlayerService);
+    playerService = module.get<PlayerService>(PlayerService);
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(playerService).toBeDefined();
   });
 });

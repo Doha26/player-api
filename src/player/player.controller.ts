@@ -28,14 +28,14 @@ export class PlayerController {
   @UsePipes(ValidationPipe)
   @HttpCode(HttpStatus.OK)
   getStats() {
-    return this.playerService.getStat();
+    return this.playerService.getStats();
   }
   @ApiTags('players')
   @Get(':id')
   @ApiOperation({ description: 'Get a single player with Id' })
   @UsePipes(ValidationPipe)
   @HttpCode(HttpStatus.OK)
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.playerService.findOne(+id);
   }
 }

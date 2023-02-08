@@ -54,7 +54,7 @@ export class PlayerService {
    * @returns Object
    */
 
-  getStat = () => {
+  getStats = () => {
     return {
       countryWithHighestWin: this.getWinnercountry().country.code,
       averagePlayerIMC: this.getAveragePlayerIMC().toFixed(2),
