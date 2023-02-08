@@ -18,20 +18,3 @@ describe('PlayerController', () => {
     expect(controller).toBeDefined();
   });
 });
-
-describe('PlayerService', () => {
-  let service: PlayerService;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [PlayerController],
-      providers: [PlayerService],
-    }).compile();
-
-    service = module.get<PlayerService>(PlayerController);
-  });
-
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});

@@ -45,7 +45,7 @@ export const handler: APIGatewayProxyHandler = async (event: any, context) => {
   if (event.path === '/api') {
     event.path = '/api/';
   }
-  event.path = event.path.includes('swagger-ui')
+  event.path = event?.path?.includes('swagger-ui')
     ? `/api${event.path}`
     : event.path;
 
