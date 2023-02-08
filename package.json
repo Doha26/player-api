@@ -20,13 +20,17 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
-    "reflect-metadata": "^0.1.13",
-    "aws-lambda": "^1.0.7",
-    "aws-serverless-express": "^3.4.0",
     "@nestjs/swagger": "^6.2.1",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1310.0",
+    "aws-serverless-express": "^3.4.0",
+    "cache-manager": "^5.1.6",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
