@@ -1,11 +1,11 @@
 import { AWSError, S3 } from 'aws-sdk';
 import { GetObjectOutput } from 'aws-sdk/clients/s3';
 import { Readable } from 'stream';
-import { IPlayer, IPlayerObject } from './interface';
+import { IPlayerObject } from './interface';
 
 const s3Bucket = process.env.S3_BUCKET_NAME || '';
 const s3BucketFilename = process.env.S3_BUCKET_FILE_NAME || '';
-const awsRegion = process.env.AWS_REGION || '';
+const awsRegion = process.env.AWS_SETTING_REGION || '';
 
 const s3 = new S3({
   region: awsRegion,

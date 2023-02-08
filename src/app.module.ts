@@ -11,7 +11,7 @@ import * as Joi from '@hapi/joi';
       validationSchema: Joi.object({
         S3_BUCKET_NAME: Joi.string().required(),
         S3_BUCKET_FILE_NAME: Joi.string().required(),
-        AWS_REGION: Joi.string().required(),
+        AWS_SETTING_REGION: Joi.string().required(),
       }),
     }),
     PlayerModule,

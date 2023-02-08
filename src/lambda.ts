@@ -43,7 +43,7 @@ const bootstrapServer = async (): Promise<Server> => {
 // Create the lambda function
 export const handler: APIGatewayProxyHandler = async (event: any, context) => {
   if (event.path === '/api') {
-    event.path == '/api/';
+    event.path = '/api/';
   }
   event.path = event.path.includes('swagger-ui')
     ? `/api${event.path}`
