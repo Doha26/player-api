@@ -2,7 +2,7 @@
 
 Player API allows to perform some actions such as :
 
-- List all players: Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/)
+- Sorted list of all players by rank ASC (from first to last): Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/)
 - Get a player with a given `Id` : Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/17)
 - Get some players stats : Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/stats)
 - Basic documentation 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api)
@@ -77,6 +77,7 @@ $ yarn run test:cov
 ## Preview
 
 ![App-demo](./screenshots/demo1.png)
+![App-demo](./screenshots/demo3.png)
 ![App-demo](./screenshots/demo2.png)
 
 ## Todo
