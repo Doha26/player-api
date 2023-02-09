@@ -1,27 +1,11 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
-import { getPlayersArrayFromS3 } from '../utils/s3';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { IPlayer } from '../utils/interface';
-
 @Injectable()
 export class PlayerService {
   players: IPlayer[] = [];
 
-  constructor() {
-    getPlayersArrayFromS3()
-      .then((playersObject) => {
-        this.players = playersObject.players;
-      })
-      .catch((err) => {
-        throw new HttpException(
-          `Unable to retrieve players:${err.message}`,
-          HttpStatus.BAD_REQUEST,
-        );
-      });
+  constructor(@Inject('PLAYERS_DATA') s3Provider: any) {
+    this.players = s3Provider.players;
   }
 
   /**
