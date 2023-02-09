@@ -1,36 +1,46 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Player API allows to perform some actions such as :
+
+- List all players: Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/)
+- Get a player with a given `Id` : Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/17)
+- Get some players stats : Demo 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api/v1/players/stats)
+- Basic documentation 👉 [here](https://whrtwu43q7.execute-api.us-east-1.amazonaws.com/prod/api)
+
+## Components
+
+This API is a simple REST API wrapped as a Lambda function, deployed on AWS using Serverless framework and Github Actions pipeline. The following components are used:
+
+- [AWS Lambda](https://aws.amazon.com/fr/lambda/) to wrap the REST API,
+- [Amazon S3](https://docs.aws.amazon.com/s3/index.html) to store the list of players in a JSON file inside a Bucket,
+- [Amazon API Gateway](https://aws.amazon.com/fr/api-gateway/) which provide tools to route HTTP requests to the lambda functions for our needs.
+- [NestJS](https://nestjs.com/) a NodeJS framework
+- [Serverless framework](https://www.serverless.com/)
 
 ## Installation
 
 ```bash
+# install node dependencies
 $ yarn install
 ```
+
+## Configurations
+
+To make the API work locally, you must have an AWS account and configure a an AWS profile on your local machine (` in .aws/credentials file`) to be able to access AWS ressources. Once this done, you need to install :
+
+- serverless framework (`npm install -g serverless`)
+- AWS CLI : to interact with the AWS cli. See 👉 [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+Now connect to AWS console and do the following actions
+
+- Create a s3 Bucket and place a JSON file containing all the players. In my case, the `S3_BUCKET_NAME` is equal to `api-players` and the `S3_BUCKET_FILE_NAME` is equal to `player.json`
+
+Once this done, you need to create a .env at the root directory with the following Variables
+
+- `AWS_PROFILE` = Your AWS Profile
+- `S3_BUCKET_NAME` = api-players
+- `S3_BUCKET_FILE_NAME` = `players.json` (Or another name `.json`)
+- `AWS_SETTING_REGION` = Your AWS Region
 
 ## Running the app
 
@@ -43,6 +53,12 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
+
+# deploy for dev stage
+$ serverless deploy
+
+# deploy for prod stage
+$ serverless deploy --stage prod
 ```
 
 ## Test
@@ -58,15 +74,18 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## Support
+## Preview
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+![App-demo](./screenshots/demo1.png)
+![App-demo](./screenshots/demo2.png)
+
+## Todo
+
+- Add more tests cases
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Foujeu Pavel](https://blog.foujeupavel.com/contact/)
 
 ## License
 
