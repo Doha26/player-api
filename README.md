@@ -82,6 +82,7 @@ $ yarn run test:cov
 ## Todo
 
 - Add more tests cases
+- improve the documentation and the Readme
 
 ## Stay in touch
 
